@@ -1,68 +1,34 @@
 const aiTools = 'https://openapi.programming-hero.com/api/ai/tools';
 
-// const dataSlice = (data) => {
-//   let dataSlice = data.data.tools.slice(0, 6);
-//   displayData(dataSlice);
-// };
-// const dataAll = (data) => {
-//   const AllShowData = data.data.tools;
-//   displayData(AllShowData);
-// };
-
-// document.getElementById('showDataAll').addEventListener('click', () => {
-//   fetch(aiTools)
-//     .then((res) => res.json())
-//     .then((data) => dataGet(data));
-//   spinner(true);
-//   const dataGet = (data) => {
-//     dataAll(data);
-//   };
-// });
-const getAllData = () => {
+const allData = () => {
   fetch(aiTools)
     .then((res) => res.json())
     .then((data) => {
-      displayData(data.data.tools);
-      // featuresList(data.data.tools);
+      sixItems(data.data.tools);
+      allItems(data.data.tools);
     });
-  // spinner(true);
-
-  // const card_box = document.getElementById('card_box');
-  // card_box.innerHTML = '';
-  // if (5 < displayData.length) {
-  //   document.getElementById('showDataAll').classList.remove('d-none');
-  // } else {
-  //   document.getElementById('showDataAll').classList.add('d-none');
-  // }
-
-  // const featuresList = document.getElementById('featuresList');
-  // displayData.features.forEach((fea) => {
-  //   console.log(fea);
-  // });
-
-  // spinner(false);
 };
-
-{
-  /* <li>${features[0]}</li>
-<li>${features[1]}</li>
-<li>${features[2]}</li> */
-}
-
+// show 6 items
+const sixItems = (data) => {
+  const showSixItems = data.slice(0, 6);
+  displayData(showSixItems);
+};
+// show All items
+const allItems = (data) => {
+  document.getElementById('showAllData').addEventListener('click', () => {
+    displayData(data);
+  });
+};
 const card_box = document.getElementById('card_box');
 const displayData = (data) => {
+  card_box.innerHTML = '';
   let ol_id = 0;
+
   data.forEach((element) => {
-    const { image, name, published_in, features, id } = element;
-    // console.log(features);
-    // const obj = features.reduce((acc, curr, index) => {
-    //   acc[index] = curr;
-    //   return acc;
-    // }, {});
-    // const { 0: one, 1: two, 2: three, 3: four } = obj;
-    // console.log(obj); // {0: "one", 1: "two", 2: "three"}
+    const { image, name, published_in, id } = element;
 
     const card_div = document.createElement('div');
+
     card_div.classList.add('col', 'card_div');
     card_div.innerHTML = `
     <div class="card shadow-sm">
@@ -88,16 +54,10 @@ const displayData = (data) => {
     `;
     card_box.appendChild(card_div);
   });
-
   featuresList(data);
 };
 
-getAllData();
-
 const featuresList = (data) => {
-  // console.log(data);
-  // const dataSlice = data.slice(0, 9);
-  // console.log(slc);
   let ol_id = 0;
   data.forEach((element) => {
     // console.log(element.features);
@@ -109,30 +69,12 @@ const featuresList = (data) => {
       // console.log(ol);
       li.innerHTML = ele;
       ol.appendChild(li);
-      console.log(ol);
+      // console.log(ol);
     });
   });
 };
 
-// const separate = (element) => {
-//   const arrayOnly = element.filter((item) => Array.isArray(item));
-//   const objectOnly = element.filter(
-//     (item) => typeof item === 'object' && !Array.isArray(item)
-//   );
-//   console.log(arrayOnly); // [[5, 6]]
-//   console.log(objectOnly); // [{ name: "John", age: 25 }]
-// };
-// const card_ol = (ol) => {
-//   // console.log(ol);
-// };
-// const features_element = (ele) => {
-//   // console.log(ele);
-//   ele.forEach((fea) => {
-//     const li = document.createElement('li');
-//     li.innerHTML = fea;
-//     // console.log(li);
-//   });
-// };
+allData();
 
 // const modal_data = (id) => {
 //   const modal_data = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
