@@ -51,20 +51,16 @@ const getAllData = () => {
 
 const card_box = document.getElementById('card_box');
 const displayData = (data) => {
+  let ol_id = 0;
   data.forEach((element) => {
     const { image, name, published_in, features, id } = element;
     // console.log(features);
-
-    const obj = features.reduce((acc, curr, index) => {
-      acc[index] = curr;
-      return acc;
-    }, {});
-    const {0:one,1:two,2:three,3:four} = obj
-    console.log(one);
-    console.log(two);
-    console.log(three);
-    console.log(four);
-   // console.log(obj); // {0: "one", 1: "two", 2: "three"}
+    // const obj = features.reduce((acc, curr, index) => {
+    //   acc[index] = curr;
+    //   return acc;
+    // }, {});
+    // const { 0: one, 1: two, 2: three, 3: four } = obj;
+    // console.log(obj); // {0: "one", 1: "two", 2: "three"}
 
     const card_div = document.createElement('div');
     card_div.classList.add('col', 'card_div');
@@ -73,7 +69,7 @@ const displayData = (data) => {
     <img src="${image}" class="img-fluid rounded m-3" alt="...">
     <div class="card-body">
     <h5 class="card-title">Features</h5>
-           <ol class="featuresList" >
+           <ol id="ol_id_${ol_id++}" >
         
             </ol>
          <hr>
@@ -93,38 +89,50 @@ const displayData = (data) => {
     card_box.appendChild(card_div);
   });
 
-  const cards = document.getElementsByClassName('featuresList');
-  featuresList(data, cards);
-
-  // console.log(cards);
+  featuresList(data);
 };
 
 getAllData();
 
-const featuresList = (data, cards, ...f) => {
+const featuresList = (data) => {
   // console.log(data);
-  // console.log(cards);
-  for (const card of cards) {
-    // console.log(card);
-    card_ol(card);
-  }
-  data.forEach((ele) => {
-    // console.log(ele.features);
-    features_element(ele.features);
+  // const dataSlice = data.slice(0, 9);
+  // console.log(slc);
+  let ol_id = 0;
+  data.forEach((element) => {
+    // console.log(element.features);
+    // const eleSlice = element.features.slice(0, 5)
+    const ol = document.getElementById('ol_id_' + ol_id++);
+    element.features.forEach((ele) => {
+      // console.log(ele);
+      const li = document.createElement('li');
+      // console.log(ol);
+      li.innerHTML = ele;
+      ol.appendChild(li);
+      console.log(ol);
+    });
   });
 };
 
-const card_ol = (ol) => {
-  // console.log(ol);
-};
-const features_element = (ele) => {
-  // console.log(ele);
-  ele.forEach((fea) => {
-    const li = document.createElement('li');
-    li.innerHTML = fea;
-    // console.log(li);
-  });
-};
+// const separate = (element) => {
+//   const arrayOnly = element.filter((item) => Array.isArray(item));
+//   const objectOnly = element.filter(
+//     (item) => typeof item === 'object' && !Array.isArray(item)
+//   );
+//   console.log(arrayOnly); // [[5, 6]]
+//   console.log(objectOnly); // [{ name: "John", age: 25 }]
+// };
+// const card_ol = (ol) => {
+//   // console.log(ol);
+// };
+// const features_element = (ele) => {
+//   // console.log(ele);
+//   ele.forEach((fea) => {
+//     const li = document.createElement('li');
+//     li.innerHTML = fea;
+//     // console.log(li);
+//   });
+// };
 
 // const modal_data = (id) => {
 //   const modal_data = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
@@ -281,3 +289,26 @@ const features_element = (ele) => {
 //     document.getElementById('spinner').classList.add('d-none');
 //   }
 // }
+
+//  separate an array and an object from a mixed array
+
+// const mixedArray = [1, 'two', { name: 'John', age: 25 }, 'four', [5, 6]];
+// const arrayOnly = mixedArray.filter((item) => Array.isArray(item));
+// const objectOnly = mixedArray.filter(
+//   (item) => typeof item === 'object' && !Array.isArray(item)
+// );
+// console.log(arrayOnly); // [[5, 6]]
+// console.log(objectOnly); // [{ name: "John", age: 25 }]
+
+// const mixedArray = [1, "two", { name: "John", age: 25 }, "four", [5, 6]];
+// let arrayOnly = [];
+// let objectOnly = [];
+// for (let i = 0; i < mixedArray.length; i++) {
+//   if (Array.isArray(mixedArray[i])) {
+//     arrayOnly.push(mixedArray[i]);
+//   } else if (typeof mixedArray[i] === "object" && !Array.isArray(mixedArray[i])) {
+//     objectOnly.push(mixedArray[i]);
+//   }
+// }
+// console.log(arrayOnly); // [[5, 6]]
+// console.log(objectOnly); // [{ name: "John", age: 25 }]
