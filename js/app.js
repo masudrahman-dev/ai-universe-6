@@ -15,13 +15,20 @@ const sixItems = (data) => {
 };
 // show All items
 const allItems = (data) => {
-  document.getElementById('showAllData').addEventListener('click', () => {
+  document.getElementById('showMore').addEventListener('click', () => {
     displayData(data);
   });
 };
 
 // display data
 const displayData = (data) => {
+  // console.log(data.length);
+  if (data.length <= 6) {
+    console.log(data.length);
+    document.getElementById('showMore').classList.remove('d-none');
+  } else {
+    document.getElementById('showMore').classList.add('d-none');
+  }
   const card_box = document.getElementById('card_box');
   card_box.innerHTML = '';
   let ol_id = 0;
