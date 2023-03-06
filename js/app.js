@@ -22,15 +22,17 @@ const allItems = (data) => {
   document.getElementById('showMore').addEventListener('click', () => {
     // sortByDate(data);
     // e.preventDefault();
+    // console.log('show more click');
     displayData(data);
     sortByDate(data);
   });
 };
+
 // sort by date
 const sortByDate = (data) => {
   document.getElementById('sortByDate').addEventListener('click', (e) => {
     e.stopPropagation();
-    console.log('click');
+    // console.log('click');
     const sortData = data.sort(
       (a, b) =>
         new Date(b.published_in).getTime() - new Date(a.published_in).getTime()
