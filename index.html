@@ -14,21 +14,25 @@
 
 <body>
     <!-- <img src="https://source.unsplash.com/user/c_v_r/100x100" onload="alert('Image loaded!')"> -->
-    <div id="showAllData" class="text-center my-5 ">
-        <button class="btn btn-primary fw-bold ">See More</button>
+
+  
+    <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
 
     <header class="container text-center mt-5">
         <h1 class="display-2 fw-bold">AI Universe Hub</h1>
         <button class="btn btn-primary mb-5 mt-3">Sort date</button>
+
     </header>
     <main class="container" id="main_conainer">
         <!-- spinner -->
-        <div id="spinner" class="text-center  mb-5 d-none position-absolute top-50 start-50 translate-middle">
+        <!-- <div id="spinner" class="text-center  mb-5  position-absolute top-50 start-50 translate-middle">
             <div class="spinner-border text-warning " role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
-        </div>
+        </div> -->
+      
         <!-- card -->
         <div id="card_box" class="row row-cols-1 row-cols-lg-3 g-5">
 
@@ -121,9 +125,11 @@
         </div>
 
 
-   
 
 
+        <div id="showAllData" class="text-center my-5 ">
+            <button class="btn btn-primary fw-bold ">See More</button>
+        </div>
 
 
     </main>

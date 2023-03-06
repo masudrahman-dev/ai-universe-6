@@ -19,8 +19,10 @@ const allItems = (data) => {
     displayData(data);
   });
 };
-const card_box = document.getElementById('card_box');
+
+// display data
 const displayData = (data) => {
+  const card_box = document.getElementById('card_box');
   card_box.innerHTML = '';
   let ol_id = 0;
 
@@ -74,8 +76,7 @@ const featuresList = (data) => {
   });
 };
 
-allData();
-
+// display modal data
 const getModalData = (id) => {
   fetch(modalData + '/' + id)
     .then((res) => res.json())
@@ -86,16 +87,10 @@ const getModalData = (id) => {
 };
 
 const showModalData = (modal_data) => {
-  console.log(modal_data);
-  // console.log(modal_data);
-  const { accuracy, description, image_link, features, input_output_examples } =
+  const { accuracy, description, image_link, input_output_examples } =
     modal_data;
 
-  // console.log(accuracy.score === null);
-
-  const features_data = Object.values(features);
-
-  const modal_body = (document.getElementById('modal_body').innerHTML = `
+  document.getElementById('modal_body').innerHTML = `
 
     <button type="button"
     class="btn-close rounded-pill bg-warning p-3 position-absolute top-0 start-100 translate-middle"
@@ -156,7 +151,8 @@ const showModalData = (modal_data) => {
     </div>
   </div>
 
-    `);
+    `;
+
   // Modal features
   const featuresListModal = document.getElementById('featuresListModal');
   // console.log(modal_data.features);
@@ -213,7 +209,7 @@ const showModalData = (modal_data) => {
     price_box.appendChild(enterprise);
   } else {
     modal_data.pricing.forEach((ele) => {
-      console.log(ele.plan);
+      // console.log(ele.plan);
       const basic = document.createElement('div');
       basic.setAttribute('class', 'text-success bg-white fw-bold p-3 rounded');
       basic.innerHTML = ` ${ele.price} ${ele.plan} `;
@@ -222,10 +218,4 @@ const showModalData = (modal_data) => {
   }
 };
 
-// function spinner(isLoading) {
-//   if (isLoading) {
-//     document.getElementById('spinner').classList.remove('d-none');
-//   } else {
-//     document.getElementById('spinner').classList.add('d-none');
-//   }
-// }
+allData();
