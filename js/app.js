@@ -14,16 +14,22 @@ const allData = () => {
 const sixItems = (data) => {
   const showSixItems = data.slice(0, 6);
   displayData(showSixItems);
+  sortByDate(showSixItems);
 };
+
 // show All items
 const allItems = (data) => {
   document.getElementById('showMore').addEventListener('click', () => {
+    // sortByDate(data);
+    // e.preventDefault();
     displayData(data);
+    sortByDate(data);
   });
 };
 // sort by date
 const sortByDate = (data) => {
-  document.getElementById('sortByDate').addEventListener('click', () => {
+  document.getElementById('sortByDate').addEventListener('click', (e) => {
+    e.stopPropagation();
     console.log('click');
     const sortData = data.sort(
       (a, b) =>
@@ -35,13 +41,7 @@ const sortByDate = (data) => {
 
 // display data
 const displayData = (data) => {
-  // console.table(data);
-  sortByDate(data);
-  // console.table(data);
-  let dates = [];
-  // console.log(data.length);
   if (data.length <= 6) {
-    // console.log(data.length);
     document.getElementById('showMore').classList.remove('d-none');
   } else {
     document.getElementById('showMore').classList.add('d-none');
@@ -52,7 +52,6 @@ const displayData = (data) => {
 
   data.forEach((element) => {
     const { image, name, published_in, id } = element;
-    dates.push(published_in);
 
     const card_div = document.createElement('div');
 
