@@ -111,7 +111,7 @@ const showModalData = (modal_data) => {
     <div class="order-1 order-xl-0">
         <h4 class="display-6 fw-bold text-light text-center text-xl-start ">${description}</h4>
 
-        <div id="price_box" class="d-flex gap-3 text-center my-5">
+        <div id="price_box" class="d-flex gap-3 text-center justify-content-center  my-5 ">
 
         </div>
         <div class="">
@@ -220,7 +220,7 @@ const showModalData = (modal_data) => {
     modal_data.pricing.forEach((ele) => {
       // console.log(ele.plan);
       const basic = document.createElement('div');
-      basic.setAttribute('class', 'text-success bg-white fw-bold p-3 rounded');
+      basic.setAttribute('class', 'text-success bg-white  fw-bold p-3 rounded');
       basic.innerHTML = ` ${ele.price} ${ele.plan} `;
       price_box.appendChild(basic);
     });
