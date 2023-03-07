@@ -191,3 +191,19 @@
 // });
 
 // console.log(items);
+// const solution = (letter) => {
+//   if (
+//     letter === 'a' ||
+//     letter === 'e' ||
+//     letter === 'i' ||
+//     letter === 'o' ||
+//     letter === 'u'
+//   ) {
+//     console.log('VOWEL');
+//   } else {
+//     console.log('CONSONANT');
+//   }
+// };
+// solution('a'); // VOWEL
+// solution('u'); // VOWEL
+// solution('k'); // CONSONANT

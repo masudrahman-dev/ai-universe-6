@@ -22,7 +22,7 @@ const allItems = (data) => {
   document.getElementById('showMore').addEventListener('click', () => {
     // sortByDate(data);
     // e.preventDefault();
-    // console.log('show more click');
+    console.log('show more click');
     displayData(data);
     sortByDate(data);
   });
@@ -30,9 +30,9 @@ const allItems = (data) => {
 
 // sort by date
 const sortByDate = (data) => {
-  document.getElementById('sortByDate').addEventListener('click', (e) => {
-    e.stopPropagation();
-    // console.log('click');
+  document.getElementById('sortByDate').addEventListener('click', () => {
+    // e.stopPropagation();
+    console.log('click sort date');
     const sortData = data.sort(
       (a, b) =>
         new Date(b.published_in).getTime() - new Date(a.published_in).getTime()
@@ -84,12 +84,6 @@ const displayData = (data) => {
   });
   spinner(false);
   featuresList(data);
-  // console.table(dates);
-  // document.getElementById('sortByDate').addEventListener('click', () => {
-  //   dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
-  //   console.table(dates);
-  //   console.log('click');
-  // });
 };
 
 const featuresList = (data) => {
@@ -135,7 +129,7 @@ const showModalData = (modal_data) => {
     <div class="order-1 order-xl-0">
         <h4 class="display-6 fw-bold text-light text-center text-xl-start ">${description}</h4>
 
-        <div id="price_box" class="d-flex gap-3 text-center justify-content-center  my-5 ">
+        <div id="price_box" class="d-flex flex-column flex-sm-row gap-3 text-center justify-content-center  my-5 ">
 
         </div>
         <div class="">
